@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FILENAME=compile
+DIRECTORY=$PWD/${0/$FILENAME/}
+. $DIRECTORY"source"
+OBJ_FILES=""
+
+for FILE in $SRC_FILES; do
+	OBJ_FILE=${FILE/.c/.o}
+	OBJ_FILE=${OBJ_FILE/src/obj}
+
+	mkdir -p ${OBJ_FILE%/*.o}
+
+	$CMD $STD $LL -o $OBJ_FILE -c $FILE
+
+	OBJ_FILES=$OBJ_FILES" "$OBJ_FILE
+done
+
+if [[ ! -d $EXE_DIR ]]; then 
+	mkdir $EXE_DIR
+fi
+
+$CMD $STD $CFLAGS -o $EXE_FILE $OBJ_FILES
+python3 $DIRECTORY"src/main.py"
+

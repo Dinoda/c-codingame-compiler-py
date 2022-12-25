@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FILENAME=clear
+DIRECTORY=$PWD/${0/$FILENAME/}
+. $DIRECTORY"source"
+
+rm $OBJ_FILES
+
+if [[ $FULL_CLEAR -eq 1 ]]; then
+	rm $EXE_FILE
+fi
+

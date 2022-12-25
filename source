@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# CONFIGURATION
+
+CMD=gcc
+STD="-Wall -Werror -Wextra -pedantic -std=gnu89"
+LL=""
+CFLAGS=""
+
+EXECUTABLE="fall"
+
+# PARAMETERS
+
+if [[ $FILENAME == "compile" ]]; then
+	FULL_CLEAR=0
+
+	if [[ $1 == "all" ]]; then
+		FULL_CLEAR=1
+	fi
+fi
+
+# BASICS
+
+SRC_DIR=${DIRECTORY/bin/src}
+OBJ_DIR=${DIRECTORY/bin/obj}
+EXE_DIR=${DIRECTORY/bin/exe}
+SRC_FILES=`find $SRC_DIR -name *.c`
+HDR_FILES=`find $SRC_DIR -name *.h`
+OBJ_FILES=`find $OBJ_DIR -name *.o`
+EXE_FILE=$EXE_DIR"/"$EXECUTABLE
+

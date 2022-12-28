@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FILENAME=temp
+DIRECTORY=$PWD/${0/$FILENAME/}
+. $DIRECTORY"source"
+OBJ_FILES=""
+
+python3 $DIRECTORY"src/main.py"

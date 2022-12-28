@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILENAME=compile
+FILENAME=temp
 DIRECTORY=$PWD/${0/$FILENAME/}
 . $DIRECTORY"source"
 OBJ_FILES=""

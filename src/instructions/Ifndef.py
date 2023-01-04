@@ -26,7 +26,7 @@ class Ifndef(Instruction):
             self.error("A condition is mandatory for a \"ifndef\" instruction")
 
     def export(self):
-        return ret + self.statements.export()
+        return self.statements.export()
 
     def __str__(self):
         ret = "#ifndef " + self.condition + "\n"

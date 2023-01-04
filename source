@@ -24,8 +24,8 @@ fi
 SRC_DIR=${DIRECTORY/bin/src}
 OBJ_DIR=${DIRECTORY/bin/obj}
 EXE_DIR=${DIRECTORY/bin/exe}
-SRC_FILES=`find $SRC_DIR -name *.c`
-HDR_FILES=`find $SRC_DIR -name *.h`
-OBJ_FILES=`find $OBJ_DIR -name *.o`
+SRC_FILES=`find $SRC_DIR -name \*.c`
+HDR_FILES=`find $SRC_DIR -name \*.h`
+OBJ_FILES=`find $OBJ_DIR -name \*.o`
 EXE_FILE=$EXE_DIR"/"$EXECUTABLE
 

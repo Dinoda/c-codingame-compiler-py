@@ -1,9 +1,11 @@
 #!/bin/bash
 
-FILENAME=temp
+FILENAME=compile
 DIRECTORY=$PWD/${0/$FILENAME/}
 . $DIRECTORY"source"
 OBJ_FILES=""
+
+echo $SRC_FILES
 
 for FILE in $SRC_FILES; do
 	OBJ_FILE=${FILE/.c/.o}
@@ -21,5 +23,5 @@ if [[ ! -d $EXE_DIR ]]; then
 fi
 
 $CMD $STD $CFLAGS -o $EXE_FILE $OBJ_FILES
-python3 $DIRECTORY"src/main.py"
+python3 $DIRECTORY"/src/main.py" $EXE_FILE"-compile.c"
 

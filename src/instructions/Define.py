@@ -23,8 +23,11 @@ class Define(Instruction):
         if not self.name:
             self.error("No name for \"define\" instruction is not authorized")
 
+    def export(self):
+        return self.__str__()
+
     def __str__(self):
         s = "#define " + self.name
         if self.value:
             s = s + ' ' + self.value
-        return s
+        return s + "\n"

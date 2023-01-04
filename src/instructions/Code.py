@@ -31,8 +31,19 @@ class Code:
     def detail(self): 
         det = ""
         for x in self.code:
-            det = det + x.__str__() + "\n"
+            det = det + x.__str__()
         return det
+
+    def debug(self):
+        for x in code:
+            x.debug()
+
+    def export(self):
+        exp = ""
+        for x in self.code:
+            if x != None:
+                exp = exp + x.export()
+        return exp
 
     def __str__(self):
         return self.detail()

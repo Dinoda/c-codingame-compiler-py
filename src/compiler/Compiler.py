@@ -1,5 +1,6 @@
 import os
 import re
+import pyperclip
 
 from compiler.Parser import Parser
 from compiler.Resolver import Resolver
@@ -21,7 +22,7 @@ class Compiler:
         self.code = Code()
         self.parser = Parser(self.code)
         #self.preprocessor = Preprocessor()
-        for root, dirs, files in os.walk('./'):
+        for root, dirs, files in os.walk('./src/'):
             for name in files:
                 if re.search("\.c$", name):
                     self.files.append(Source(root + "/" + name))
@@ -30,11 +31,14 @@ class Compiler:
 
         # Preprocessing parsing
         for f in self.files:
-            self.parser.parseFile(f)
+            self.code.append(self.parser.parseFile(f))
 
+        Resolver(self.parser).resolve(self.code)
         
-        # Preprocessing 
-        #self.preprocessor.preprocess(self.code)
-        
-# end ?
+    def export(self, filepath):
+        code = self.code.export()
+        with open(filepath, 'w') as f:
+            f.write(code)
+
+        pyperclip.copy(code)
 

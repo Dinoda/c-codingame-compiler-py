@@ -14,7 +14,7 @@ class Ifndef(Instruction):
     # The condition (if it is defined, the statements are not executed)
     condition = ""
 
-    def __init__(self, n, line):
+    def __init__(self, n, line, source):
         super().__init__(n, line)
 
         self.statements = Code()
@@ -25,11 +25,13 @@ class Ifndef(Instruction):
         if not self.condition:
             self.error("A condition is mandatory for a \"ifndef\" instruction")
 
+    def export(self):
+        return self.__str__()
+
     def __str__(self):
         ret = "#ifndef " + self.condition + "\n"
 
-        for x in self.statements:
-            ret = ret + x + "\n"
+        ret = ret + self.statements.export()
 
         return ret + "#endif\n"
 

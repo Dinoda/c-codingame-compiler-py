@@ -16,3 +16,6 @@ class Instruction:
         print("Error line " + self.n + ": \"" + self.line + "\"\n")
         print("\t\t" + desc)
 
+    def export(self):
+        pass
+
